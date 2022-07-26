@@ -8,3 +8,15 @@
 
   <%= button_to "Destroy this recipe", @recipe, method: :delete %>
 </div>
+
+<%= render 'foods/food', locals: { food: @food } %>
+
+<div class="food-table">
+  <% @recipe.foods.each do |food| %>
+    <div class="food-row">
+      <div class="food-name"><%= food.name %></div>
+      <div class="food-quantity"><%= food.quantity %></div>
+      <div class="food-measurement"><%= food.measurement %></div>
+    </div>
+  <% end %>
+</div>

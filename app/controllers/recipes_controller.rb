@@ -11,7 +11,12 @@ class RecipesController < ApplicationController
   end
 
   # GET /recipes/1 or /recipes/1.json
-  def show; end
+  def show
+    @food = Food.new()
+    # @recipe = Recipe.find(params[:id])
+    # @recipe.foods << @food
+    # @recipe.save
+  end
 
   # GET /recipes/new
   def new
