@@ -33,6 +33,11 @@ class FoodsController < ApplicationController
     end
   end
 
+  def shopping_list
+    # TODO: implement shopping list
+    @foods = Food.where(user: current_user)
+  end
+
   # PATCH/PUT /foods/1 or /foods/1.json
   def update
     respond_to do |format|
