@@ -19,10 +19,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_26_155032) do
     t.string "unit"
     t.decimal "price"
     t.integer "quantity"
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_foods_on_users_id"
+    t.index ["user_id"], name: "index_foods_on_user_id"
   end
 
   create_table "recipe_foods", force: :cascade do |t|
@@ -41,10 +41,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_26_155032) do
     t.integer "cooking_time"
     t.text "description"
     t.boolean "public", default: false
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_recipes_on_users_id"
+    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
