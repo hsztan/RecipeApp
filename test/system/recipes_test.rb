@@ -19,6 +19,7 @@ class RecipesTest < ApplicationSystemTestCase
     fill_in "Name", with: @recipe.name
     fill_in "Preparation time", with: @recipe.preparation_time
     check "Public" if @recipe.public
+    fill_in "User", with: @recipe.user_id
     click_on "Create Recipe"
 
     assert_text "Recipe was successfully created"
@@ -34,6 +35,7 @@ class RecipesTest < ApplicationSystemTestCase
     fill_in "Name", with: @recipe.name
     fill_in "Preparation time", with: @recipe.preparation_time
     check "Public" if @recipe.public
+    fill_in "User", with: @recipe.user_id
     click_on "Update Recipe"
 
     assert_text "Recipe was successfully updated"
