@@ -1,4 +1,6 @@
 class Recipe < ApplicationRecord
   belongs_to :user
-  has_many :foods, through: :recipe_foods
+  # has many foods through food_recipes
+  has_many :food_recipes
+  has_many :foods, through: :food_recipes
 end
