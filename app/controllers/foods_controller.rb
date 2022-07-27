@@ -35,7 +35,7 @@ class FoodsController < ApplicationController
 
   def shopping_list
     # TODO: implement shopping list
-    @foods = Food.where(user: current_user)
+    @food_recipes = FoodRecipe.where(recipe: Recipe.where(user: current_user))
   end
 
   # PATCH/PUT /foods/1 or /foods/1.json

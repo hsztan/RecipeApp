@@ -6,6 +6,7 @@
   <%= button_to "Destroy this recipe", @recipe, method: :delete %>
 </div>
 <div class="add-food">
+  <%=link_to "Shopping List", shopping_list_path %>
   <%= render partial: "food_recipe_form", locals: {food_recipe: @food_recipe} %>
 </div>
 <div class="food-table">
@@ -13,7 +14,7 @@
     <div class="food-row">
       <div class="food-name"><%= ingredient.food.name %></div>
       <div class="food-quantity"><%= ingredient.quantity %> <%= ingredient.food.unit %></div>
-      <div class="food-value"><%= ingredient.food.price %></div>
+      <div class="food-value">$<%= ingredient.food.price %></div>
       <div class="food-actions"> <%= link_to "Modify", edit_ingredient_path(@recipe, ingredient.food) %> | <%= button_to "Remove", ingredient, method: :delete %> </div>
       <br>
     </div>
