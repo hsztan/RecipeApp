@@ -1,22 +1,20 @@
 <p style="color: green"><%= notice %></p>
-
 <%= render @recipe %>
-
 <div>
   <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
   <%= link_to "Back to recipes", recipes_path %>
-
   <%= button_to "Destroy this recipe", @recipe, method: :delete %>
 </div>
-
-<%= render 'foods/food', locals: { food: @food } %>
-
+<div class="add-food">
+  <%= render partial: "food_recipe_form", locals: {food: @food, recipe: @recipe} %>
+</div>
 <div class="food-table">
-  <% @recipe.foods.each do |food| %>
+  <% @recipe_foods.each do |recipe_food| %>
     <div class="food-row">
-      <div class="food-name"><%= food.name %></div>
-      <div class="food-quantity"><%= food.quantity %></div>
-      <div class="food-measurement"><%= food.measurement %></div>
+      <div class="food-name"><%= recipe_food.food.name %></div>
+      <div class="food-quantity"><%= recipe_food.quantity %></div>
+      <div class="food-value"><%= recipe_food.food.price %></div>
+      <div class="food-actions"> Modify | Remove </div>
     </div>
   <% end %>
 </div>
