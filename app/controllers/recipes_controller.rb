@@ -12,9 +12,16 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1 or /recipes/1.json
   def show
-    @food = Food.new
+    @food_recipe = FoodRecipe.new
     @recipe = Recipe.find(params[:id])
-    @recipe_foods = FoodRecipe.where(recipe: @recipe)
+    @ingredients = FoodRecipe.where(recipe: @recipe)
+  end
+
+  def edit_ingredient
+    @recipe = Recipe.find(params[:recipe_id])
+    @ingredients = FoodRecipe.where(recipe: @recipe)
+    @food_recipe = FoodRecipe.where(recipe: @recipe, food: Food.find(params[:food_id])).first
+    render 'recipes/show'
   end
 
   # GET /recipes/new
