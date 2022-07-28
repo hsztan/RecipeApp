@@ -35,7 +35,12 @@ class FoodsController < ApplicationController
 
   def shopping_list
     # TODO: implement shopping list
-    @food_recipes = FoodRecipe.where(recipe: Recipe.where(user: current_user))
+    if params[:id]
+      @recipe = Recipe.find(params[:id])
+      @shopping_list = Food.recipe_food_quantities(@recipe)
+    else
+      @shopping_list = Food.recipe_food_quantities_all(current_user)
+    end
   end
 
   # PATCH/PUT /foods/1 or /foods/1.json

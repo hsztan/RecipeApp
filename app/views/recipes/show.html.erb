@@ -6,7 +6,7 @@
   <%= button_to "Destroy this recipe", @recipe, method: :delete %>
 </div>
 <div class="add-food">
-  <%=link_to "Shopping List", shopping_list_path %>
+  <%=link_to "Shopping List", shopping_list_recipe_path(@recipe) %>
   <%= render partial: "food_recipe_form", locals: {food_recipe: @food_recipe} %>
 </div>
 <div class="food-table">
