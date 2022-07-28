@@ -14,12 +14,18 @@ class Food < ApplicationRecord
 
   def self.recipe_food_quantities(recipe)
     ingredients = {}
-    recipe.food_recipes.each do |food_recipe|
-      quantity = (food_recipe.quantity || 0) - (food_recipe.food.quantity || 0)
+    foods_clone = []
+    recipe.foods.each do |food|
+      foods_clone << food
+    end
+    recipe.food_recipes.each_with_index do |food_recipe, idx|
+      amount = (food_recipe.quantity || 0) - (foods_clone[idx].quantity || 0)
+      quantity = amount.positive? ? 0 : amount.abs()
       ingredients[food_recipe.food.name] = {
         quantity:,
         price: quantity * food_recipe.food.price
       }
+      foods_clone[idx].quantity = quantity.negative? ? 0 : quantity
     end
     ingredients
   end
