@@ -33,7 +33,8 @@ class Food < ApplicationRecord
       quantity = amount_to_buy.negative? ? amount_to_buy.abs : 0
       ingredients[food_recipe.food.name] = {
         quantity:,
-        price: quantity * food_recipe.food.price
+        price: quantity * food_recipe.food.price,
+        units: foods_clone[idx].unit
       }
       foods_clone[idx].quantity = amount_to_buy.negative? ? 0 : foods_clone[idx].quantity - amount_to_buy
     end
