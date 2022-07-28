@@ -20,7 +20,7 @@ class Food < ApplicationRecord
     end
     recipe.food_recipes.each_with_index do |food_recipe, idx|
       amount = (food_recipe.quantity || 0) - (foods_clone[idx].quantity || 0)
-      quantity = amount.positive? ? 0 : amount.abs()
+      quantity = amount.positive? ? 0 : amount.abs
       ingredients[food_recipe.food.name] = {
         quantity:,
         price: quantity * food_recipe.food.price
