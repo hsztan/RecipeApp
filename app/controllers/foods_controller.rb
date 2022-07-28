@@ -41,6 +41,8 @@ class FoodsController < ApplicationController
     else
       @shopping_list = Food.recipe_food_quantities_all(current_user)
     end
+    @total_price = 0
+    @shopping_list.each { |_k, v| @total_price += v[:price] }
   end
 
   # PATCH/PUT /foods/1 or /foods/1.json
