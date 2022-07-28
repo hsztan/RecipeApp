@@ -37,9 +37,9 @@ class FoodsController < ApplicationController
     # TODO: implement shopping list
     if params[:id]
       @recipe = Recipe.find(params[:id])
-      @shopping_list = Food.recipe_food_quantities(@recipe)
+      @shopping_list = Food.food_to_buy(recipe: @recipe)
     else
-      @shopping_list = Food.recipe_food_quantities_all(current_user)
+      @shopping_list = Food.food_to_buy(user: current_user)
     end
     @total_price = 0
     @shopping_list.each { |_k, v| @total_price += v[:price] }
