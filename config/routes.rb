@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   get '/public_recipes' => 'recipes#public_recipes'
-  get '/shopping_list' => 'foods#shopping_list'
+  get '/shopping_list/:id' => 'foods#shopping_list', as: :shopping_list_recipe
+  get '/shopping_list' => 'foods#shopping_list', as: :shopping_list
   post '/food_recipes/:id' => 'food_recipes#create', as: :food_recipes
   patch '/food_recipes/:id' => 'food_recipes#update', as: :food_recipe
   get '/recipes/:recipe_id/edit_ingredient/:food_id' => 'recipes#edit_ingredient', as: :edit_ingredient

@@ -35,7 +35,14 @@ class FoodsController < ApplicationController
 
   def shopping_list
     # TODO: implement shopping list
-    @foods = Food.where(user: current_user)
+    if params[:id]
+      @recipe = Recipe.find(params[:id])
+      @shopping_list = Food.food_to_buy(recipe: @recipe)
+    else
+      @shopping_list = Food.food_to_buy(user: current_user)
+    end
+    @total_price = 0
+    @shopping_list.each { |_k, v| @total_price += v[:price] }
   end
 
   # PATCH/PUT /foods/1 or /foods/1.json
