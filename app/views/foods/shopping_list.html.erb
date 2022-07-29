@@ -1,14 +1,21 @@
-<h2>Shopping List</h2>
+<h1>Shopping List</h1>
+<div class="shopping-list-header">
 <h4>Amount of food items to buy: <%=@shopping_list.count%></h4>
 <h4>Total value of food needed: <%=@total_price%></h4>
+</div>
 <div class="shopping-list">
-  <ul class="container">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
     <% @shopping_list.each do |food, (key, val)| %>
-      <li class="food-item">
-        <%= food %>
-        <%= key[:quantity] %> <%= key[:units] %>
-        <%= key[:price] %>
-      </li>
+    <tr>
+      <td><%= food %></td>
+      <td><%= key[:quantity] %> <%= key[:units] %></td>
+      <td><%= key[:price] %></td>
+    </tr>
     <% end %>
-  </ul>
+  </table>
 </div>

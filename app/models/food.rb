@@ -7,7 +7,7 @@ class Food < ApplicationRecord
   def self.food_to_buy(recipe: nil, user: nil)
     ingredients = {}
     foods_clone = []
-    recipe.foods.each { |food| foods_clone << food } if recipe
+    recipe&.foods&.each { |food| foods_clone << food }
 
     recipe_food_quantities(recipe:, ingredients:, foods_clone:) if recipe
 
