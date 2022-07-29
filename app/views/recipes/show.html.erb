@@ -3,22 +3,26 @@
   <h2><%= @recipe.name %></h2>
   <div class="recipe-info-header-bind">
     <p>Preparation time: <%= @recipe.preparation_time %> minutes</p>
-    <p class="toggle">Ṕublic <label class="switch">
-      <input type="checkbox">
-      <span class="slider round"></span>
-    </label></p>
+    <% if can? :destroy, @recipe %>
+      <p class="toggle">Ṕublic <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label></p>
+    <% end %>
   </div>
   <p>Cooking time: <%= @recipe.cooking_time %> minutes</p>
   <p>Steps go here...</p>
 </div>
 <div>
-<%#  <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> 
+  <%#  <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %>
   <%= link_to "Back to recipes", recipes_path %>
   <%= button_to "Destroy this recipe", @recipe, method: :delete %>
 </div>
 <div class="add-food">
   <%=link_to "Generate Shopping List", shopping_list_recipe_path(@recipe) %>
-  <%= render partial: "food_recipe_form", locals: {food_recipe: @food_recipe} %>
+  <% if can? :destroy, @recipe %>
+    <%= render partial: "food_recipe_form", locals: {food_recipe: @food_recipe} %>
+  <% end %>
 </div>
 <div class="food-table">
   <table>
@@ -28,15 +32,17 @@
       <th>Value</th>
       <th>Actions</th>
     </tr>
-    
     <% @ingredients.each do |ingredient| %>
       <tr>
         <td class="food-name"><%= ingredient.food.name %></td>
         <td class="food-quantity"><%= ingredient.quantity %> <%= ingredient.food.unit %></td>
         <td class="food-value">$<%= ingredient.food.price %></td>
-        <td class="food-actions"> <%= link_to "Modify", edit_ingredient_path(@recipe, ingredient.food) %> | <%= button_to "Remove", ingredient, method: :delete %> </td>
+        <% if can? :destroy, @recipe %>
+          <td class="food-actions"> <%= link_to "Modify", edit_ingredient_path(@recipe, ingredient.food) %> | <%= button_to "Remove", ingredient, method: :delete %> </td>
+        <% else %>
+          <td class="food-actions">  </td>
+        <% end %>
       </tr>
     <% end %>
-    
   </table>
 </div>
