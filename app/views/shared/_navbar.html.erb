@@ -6,9 +6,12 @@
       </a>
     </div>
     <ul class="nav navbar-nav">
-      <li><%= link_to 'Recipes', recipes_path %></li>
-      <li><%= link_to 'Public Recipes', public_recipes_path %></li>
-      <li><%= link_to 'Shopping List', shopping_list_path  %></li>
+      <% if current_user %>
+        <li><%= link_to 'Foods', foods_path %></li>
+        <li><%= link_to 'Recipes', recipes_path %></li>
+        <li><%= link_to 'Public Recipes', public_recipes_path %></li>
+        <li><%= link_to 'Shopping List', shopping_list_path  %></li>
+      <% end %>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <%if user_signed_in?%>

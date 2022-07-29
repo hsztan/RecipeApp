@@ -4,7 +4,6 @@
     <% if can? :destroy, recipe %>
       <%= button_to 'Remove', recipe_path(recipe), method: :delete, class: "removeBtn" %>
     <% end %>
-    <%= link_to 'Delete', recipe, :method => :delete, :confirm => 'Are you sure?' %>
   </div>
   <p>
     <%= recipe.description %>
