@@ -32,7 +32,7 @@
       <th>Value</th>
       <th>Actions</th>
     </tr>
-    <% @ingredients.each do |ingredient| %>
+    <% @ingredients.includes([:food]).each do |ingredient| %>
       <tr>
         <td class="food-name"><%= ingredient.food.name %></td>
         <td class="food-quantity"><%= ingredient.quantity %> <%= ingredient.food.unit %></td>
