@@ -19,8 +19,8 @@ class RecipesController < ApplicationController
 
   def edit_ingredient
     @recipe = Recipe.find(params[:recipe_id])
-    @ingredients = FoodRecipe.where(recipe: @recipe)
-    @food_recipe = FoodRecipe.where(recipe: @recipe, food: Food.find(params[:food_id])).first
+    @ingredients = FoodRecipe.includes([:food]).where(recipe: @recipe)
+    @food_recipe = FoodRecipe.includes([:food]).where(recipe: @recipe, food: Food.find(params[:food_id])).first
     render 'recipes/show'
   end
 

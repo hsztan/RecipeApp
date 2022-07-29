@@ -36,7 +36,7 @@ class FoodsController < ApplicationController
   def shopping_list
     # TODO: implement shopping list
     if params[:id]
-      @recipe = Recipe.find(params[:id])
+      @recipe = Recipe.includes([:food_recipes]).find(params[:id])
       @shopping_list = Food.food_to_buy(recipe: @recipe)
     else
       @shopping_list = Food.food_to_buy(user: current_user)
