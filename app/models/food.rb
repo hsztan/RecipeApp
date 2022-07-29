@@ -4,7 +4,7 @@ class Food < ApplicationRecord
   has_many :food_recipes
   has_many :recipes, through: :food_recipes
 
-  def self.food_to_buy(recipe: nil, user: nil)
+  def self.food_to_buy(recipe: nil, user: nil) # rubocop:disable Metrics/CyclomaticComplexity
     ingredients = {}
     foods_clone = []
     recipe&.foods&.each { |food| foods_clone << food }
