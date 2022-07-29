@@ -28,11 +28,15 @@
       <th>Value</th>
       <th>Actions</th>
     </tr>
+    
     <% @ingredients.each do |ingredient| %>
-      <td class="food-name"><%= ingredient.food.name %></td>
-      <td class="food-quantity"><%= ingredient.quantity %> <%= ingredient.food.unit %></td>
-      <td class="food-value">$<%= ingredient.food.price %></td>
-      <td class="food-actions"> <%= link_to "Modify", edit_ingredient_path(@recipe, ingredient.food) %> | <%= button_to "Remove", ingredient, method: :delete %> </td>
+      <tr>
+        <td class="food-name"><%= ingredient.food.name %></td>
+        <td class="food-quantity"><%= ingredient.quantity %> <%= ingredient.food.unit %></td>
+        <td class="food-value">$<%= ingredient.food.price %></td>
+        <td class="food-actions"> <%= link_to "Modify", edit_ingredient_path(@recipe, ingredient.food) %> | <%= button_to "Remove", ingredient, method: :delete %> </td>
+      </tr>
     <% end %>
+    
   </table>
 </div>
