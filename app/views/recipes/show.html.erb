@@ -39,8 +39,10 @@
         <td class="food-value">$<%= ingredient.food.price %></td>
         <% if can? :destroy, @recipe %>
           <td class="food-actions"> <%= link_to "Modify", edit_ingredient_path(@recipe, ingredient.food) %> | <%= button_to "Remove", ingredient, method: :delete %> </td>
-        </tr>
-      <% end %>
+        <% else %>
+          <td class="food-actions">  </td>
+        <% end %>
+      </tr>
     <% end %>
   </table>
 </div>
