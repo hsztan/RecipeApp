@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="header-bar">
+  <%= link_to "Add Food", new_food_path %>
+</div>
+
+<div id="foods">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Unit</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Actions</th>
+    </tr>
+    <% @foods.each do |food| %>
+    <tr>
+      <%= render food %>
+      <td class="food-actions"><%= button_to "Delete", food, method: :delete %> <%= link_to "Show this food", food %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
